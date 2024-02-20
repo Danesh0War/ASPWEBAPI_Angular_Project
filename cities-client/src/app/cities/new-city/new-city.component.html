@@ -1,0 +1,46 @@
+<form class="form-group" [formGroup]="cityForm" (ngSubmit)="onFormSubmit()">
+    <div>
+      <label class="control-label">
+        City Name:
+        <input type='text' 
+               class="form-control" 
+               placeholder="Enter City Name" 
+               formControlName="name" />
+      </label>
+      <div *ngIf="cityForm.controls['name'].touched && cityForm.controls['name'].invalid" class="error">
+        <div *ngIf="cityForm.controls['name']?.errors?.['required']">
+          This field is required.
+        </div>
+        <div *ngIf="cityForm.controls['name']?.errors?.['minlength']">
+            City Name must be at lest 3 characters.
+        </div>
+        <div *ngIf="cityForm.controls['name']?.errors?.['maxlength']">
+            City Name must be at maximum 20 characters.
+        </div>
+        <div *ngIf="cityForm.controls['name'].errors?.['pattern']">
+            Please enter a valid city name (only alphabets allowed).
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label class="control-label">
+        Number of People:
+          <input type="text" class="form-control" placeholder="Enter the number of residents" formControlName="numberOfPeople" />
+      </label>
+      <div *ngIf="cityForm.controls['numberOfPeople'].touched && cityForm.controls['numberOfPeople'].invalid" class="error">
+        <div *ngIf="cityForm.controls['numberOfPeople']?.errors?.['required']">
+          This field is required.
+        </div>
+        <div *ngIf="cityForm.controls['numberOfPeople'].errors?.['pattern']">
+            Please enter a valid city name (only positive numbers allowed).
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="btn btn-success" type="submit" [disabled]="!cityForm.valid">Submit</button>
+    </div>
+  </form>
+   
+  

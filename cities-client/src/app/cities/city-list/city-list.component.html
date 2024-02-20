@@ -1,0 +1,13 @@
+
+<div class="row user-item" *ngFor="let city of cities$ | async"> 
+    <div>
+        Name: {{ city.name }}
+    </div>
+    <div>
+        Number of people: {{ city.numberOfPeople }}
+    </div>
+</div>
+
+<div class="add-city-button">
+    <button class="btn btn-dark" (click)="RedirectToCityAdd()">Add City</button>
+</div>
